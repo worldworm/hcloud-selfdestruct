@@ -3,7 +3,8 @@
   <i>A cli tool to self destruct a hetzner cloud server</i>
 </p>
 
-
+[![Stable Version](https://img.shields.io/pypi/v/hcloud-selfdestruct?color=blue)](https://pypi.org/project/hcloud-selfdestruct/)
+[![License](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=fff)](https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE)
 ## Why
 
 Are you using a hetzner cloud server for heavy and long-running computing power? But you don't want to have additional costs when the calculation is done?
