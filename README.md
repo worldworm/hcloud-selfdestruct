@@ -58,6 +58,6 @@ Find the server id here (enter without "#")
 - complete self detection
 ---
 <p align="center">
-  <i>© <a href="https://github.com/worldworm">worldworm</a> 2022</i><br>
+  <i>© <a href="https://github.com/worldworm">worldworm</a> 2023</i><br>
   <i>Licensed under <a href="https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE">MIT</a></i><br>
 </p>
