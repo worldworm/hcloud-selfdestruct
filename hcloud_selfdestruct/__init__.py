@@ -5,8 +5,10 @@ import os
 import apprise
 from hcloud import Client
 
+
 class HcloudSelfDestruct:
     ''' main class '''
+
     def __init__(self, api_token):
         self.api_token = api_token
         self.server_id = None
@@ -20,7 +22,7 @@ class HcloudSelfDestruct:
         for server in servers:
             if server.public_net.ipv4.ip == ip_address and server.name == hostname:
                 return server
-        else: # pylint: disable=useless-else-on-loop
+        else:  # pylint: disable=useless-else-on-loop
             raise Exception("Could not identify server instance. Please specify server id.")
 
     def get_server_object(self):
@@ -54,6 +56,7 @@ class HcloudSelfDestruct:
         self.notify("shutting down")
         self.server.shutdown()
 
+
 def main():
     ''' main function '''
     argparser = argparse.ArgumentParser(description="cli tool to self destruct a hetzner cloud server")
@@ -66,18 +69,18 @@ def main():
     argparser.add_argument("--server-id",
                            "--server",
                            "--id",
-                          type=int,
-                          required=False,
-                          help="server id")
+                           type=int,
+                           required=False,
+                           help="server id")
     argparser.add_argument("--apprise-id",
                            "--apprise",
                            "--notify",
-                          type=str,
-                          required=False,
-                          help="apprise notification string")
+                           type=str,
+                           required=False,
+                           help="apprise notification string")
     argparser.add_argument("--shutdown",
-                          action="store_true",
-                          help="just shutdown the server and not destroy it")
+                           action="store_true",
+                           help="just shutdown the server and not destroy it")
     args = argparser.parse_args()
 
     self_destroy = HcloudSelfDestruct(args.api_token)
