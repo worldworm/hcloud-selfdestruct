@@ -1,0 +1,31 @@
+{
+    "name": "Python 3",
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.10",
+    "features": {
+        "ghcr.io/devcontainers-contrib/features/poetry:2": {}
+    },
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "poetry config virtualenvs.in-project true && poetry install",
+    "postCreateCommand": "",
+    "postAttachCommand": {
+        "help": "poetry run hcloud-selfdestruct --help"
+    },
+    "forwardPorts": [],
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "hcloud_selfdestruct/__init__.py"
+            ]
+        },
+        "vscode": {
+            "settings": {
+                "extensions.ignoreRecommendations": true,
+                "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+                "python.linting.pylintPath": "${workspaceFolder}/.venv/bin/pylint"
+            }
+            // "extensions": [
+            //     "ms-python.python"
+            // ]
+        }
+    }
+}
