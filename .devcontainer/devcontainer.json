@@ -1,6 +1,5 @@
 {
-    "name": "Python 3",
-    "image": "mcr.microsoft.com/devcontainers/python:0-3.10",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {
         "ghcr.io/devcontainers-contrib/features/poetry:2": {}
     },
@@ -22,10 +21,10 @@
                 "extensions.ignoreRecommendations": true,
                 "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
                 "python.linting.pylintPath": "${workspaceFolder}/.venv/bin/pylint"
-            }
-            // "extensions": [
-            //     "ms-python.python"
-            // ]
+            },
+            "extensions": [
+                "ms-python.python"
+            ]
         }
     }
 }
