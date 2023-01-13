@@ -5,7 +5,7 @@
     },
     "waitFor": "onCreateCommand",
     "updateContentCommand": "poetry config virtualenvs.in-project true && poetry install",
-    "postCreateCommand": "",
+    "postCreateCommand": "git pull",
     "postAttachCommand": {
         "help": "poetry run hcloud-selfdestruct --help"
     },
