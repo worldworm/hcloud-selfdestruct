@@ -5,6 +5,7 @@
 
 [![Stable Version](https://img.shields.io/pypi/v/hcloud-selfdestruct?color=blue)](https://pypi.org/project/hcloud-selfdestruct/)
 [![License](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=fff)](https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE)
+[![Mentioned in Awesome hcloud](https://camo.githubusercontent.com/e5d3197f63169393ee5695f496402136b412d5e3b1d77dc5aa80805fdd5e7edb/68747470733a2f2f617765736f6d652e72652f6d656e74696f6e65642d62616467652e737667)](https://github.com/hetznercloud/awesome-hcloud)
 [![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-black?logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=565239435&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json)
 
 ## Why
