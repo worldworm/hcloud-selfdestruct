@@ -5,6 +5,8 @@
 
 [![Stable Version](https://img.shields.io/pypi/v/hcloud-selfdestruct?color=blue)](https://pypi.org/project/hcloud-selfdestruct/)
 [![License](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=fff)](https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-black?logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=565239435&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json)
+
 ## Why
 
 Are you using a hetzner cloud server for heavy and long-running computing power? But you don't want to have additional costs when the calculation is done?
