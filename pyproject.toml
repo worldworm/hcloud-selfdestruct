@@ -12,8 +12,8 @@ packages = [{include = "hcloud_selfdestruct"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-hcloud = "^1.18.1"
-apprise = "^1.1.0"
+hcloud = "^1.18.2"
+apprise = "^1.2.1"
 
 [build-system]
 requires = ["poetry-core"]
