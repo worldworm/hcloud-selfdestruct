@@ -23,6 +23,7 @@ class HcloudSelfDestruct:
             if server.public_net.ipv4.ip == ip_address and server.name == hostname:
                 return server
         else:  # pylint: disable=useless-else-on-loop
+            self.notify("could not identify")
             raise Exception("Could not identify server instance. Please specify server id.")
 
     def get_server_object(self):
@@ -40,8 +41,8 @@ class HcloudSelfDestruct:
             apprise_obj = apprise.Apprise()
             apprise_obj.add(self.apprise_id)
             apprise_obj.notify(
-                body=f"{action} server now: {self.server.name}",
-                title="hcloud_destroy",
+                body=f"{action} server{'' if not self.server else f': {self.server.name}'}",
+                title="hcloud-selfdestruct",
             )
 
     def destroy(self):
