@@ -29,6 +29,7 @@ longrunningcommand && hcloud-selfdestruct --api-token abcdefg &
 #-- or --
 sleep 1h && hcloud-selfdestruct --api-token abcdefg --server-id 12345678 --apprise-id gotify://example.com/token &
 ```
+Note: Only the server is deleted. Attachments such as mounted volumes, floating IPs and more will not be removed.
 
 ## Help
 ```
@@ -57,9 +58,8 @@ Find the server id here (enter without "#")
 ![How to find the server id](./.media/howToFindServerId.png "How to find the server id")
 
 ## Not yet tested
-- server instances with mounted volume
-- additional addons that could prevent deletion
 - complete self detection
+
 ---
 <p align="center">
   <i>© <a href="https://github.com/worldworm">worldworm</a> 2023</i><br>
