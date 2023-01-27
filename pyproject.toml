@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hcloud-selfdestruct"
-version = "0.0.2"
+version = "0.0.3"
 description = "cli tool to self destruct a hetzner cloud server"
 authors = ["worldworm"]
 readme = "README.md"
@@ -11,7 +11,7 @@ license = "MIT"
 packages = [{include = "hcloud_selfdestruct"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9,<3.12"
 hcloud = "^1.18.2"
 apprise = "^1.2.1"
 
