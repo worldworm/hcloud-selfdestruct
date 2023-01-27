@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hcloud-selfdestruct"
-version = "0.0.2"
+version = "0.0.3"
 description = "cli tool to self destruct a hetzner cloud server"
 authors = ["worldworm"]
 readme = "README.md"
