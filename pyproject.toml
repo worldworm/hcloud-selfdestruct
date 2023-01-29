@@ -15,6 +15,9 @@ python = ">=3.9,<3.12"
 hcloud = "^1.18.2"
 apprise = "^1.2.1"
 
+[tool.poetry.group.dev.dependencies]
+paramiko = "^3.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
