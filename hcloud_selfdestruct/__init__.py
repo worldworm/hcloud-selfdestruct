@@ -2,6 +2,7 @@
 import argparse
 import socket
 import os
+import importlib.metadata
 import apprise
 from hcloud import Client
 
@@ -82,6 +83,10 @@ def main():
     argparser.add_argument("--shutdown",
                            action="store_true",
                            help="just shutdown the server and not destroy it")
+    argparser.add_argument("--version",
+                           "-v",
+                           action="version",
+                           version=f"%(prog)s {importlib.metadata.version('hcloud-selfdestruct')}")
     args = argparser.parse_args()
 
     self_destroy = HcloudSelfDestruct(args.api_token)
