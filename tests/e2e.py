@@ -4,6 +4,7 @@ import argparse
 from time import sleep
 import warnings
 import paramiko
+from termcolor import cprint
 from hcloud import Client, APIException
 from hcloud.server_types.domain import ServerType
 from hcloud.images.domain import Image
@@ -26,14 +27,14 @@ class E2ESelfDestruct:
 
     def generate_ssh_key(self):
         """ generate ssh key """
-        print("generating ssh key")
+        cprint("generating ssh key", "dark_grey")
         key = paramiko.RSAKey.generate(4096)
         key.write_private_key_file(self.ssh_private_key_file, password=None)
         self.ssh_public_key = f"{key.get_name()} {key.get_base64()}"
 
     def upload_ssh_key(self):
         """ upload ssh key to hetzner cloud """
-        print("uploading ssh key to hetzner cloud")
+        cprint("uploading ssh key to hetzner cloud", "dark_grey")
         self.hcloud.ssh_keys.create(name="E2ESelfDestruct", public_key=self.ssh_public_key)
 
     def get_cloud_init_from_file(self):
@@ -46,7 +47,7 @@ class E2ESelfDestruct:
         """ deploy multiple hcloud server """
         cloud_init = self.get_cloud_init_from_file()
         ssh_key = self.hcloud.ssh_keys.get_by_name("E2ESelfDestruct")
-        print("deploying servers")
+        print("deploying servers...")
         for image in ["ubuntu-22.04", "fedora-37", "debian-11", "centos-stream-9", "rocky-9"]:
             print(f"    {image}")
             response = self.hcloud.servers.create(
@@ -56,9 +57,9 @@ class E2ESelfDestruct:
 
     def wait_for_ssh_server(self):
         """ wait for ssh server to be available """
-        print("waiting for ssh-server to boot")
+        cprint("waiting for ssh-server to boot...", "dark_grey")
         for response in self.hcloud_server_responses:
-            print(f"    {response.server.name}")
+            cprint(f"    {response.server.name}", "dark_grey")
             ssh_available = False
             while ssh_available is False:
                 try:
@@ -74,9 +75,9 @@ class E2ESelfDestruct:
 
     def wait_for_cloud_init(self):
         """ wait for cloud-init to install hcloud-selfdestruct """
-        print("waiting for cloud-init to finish")
+        cprint("waiting for cloud-init to finish...", "dark_grey")
         for response in self.hcloud_server_responses:
-            print(f"    {response.server.name}")
+            cprint(f"    {response.server.name}", "dark_grey")
             ssh_con = paramiko.client.SSHClient()
             ssh_con.set_missing_host_key_policy(paramiko.WarningPolicy())
             ssh_key = paramiko.RSAKey.from_private_key_file(self.ssh_private_key_file, password=None)
@@ -92,7 +93,7 @@ class E2ESelfDestruct:
 
     def trigger_selfdestruct(self):
         """ test hcloud-selfdestruct """
-        print("running selfdestruct")
+        print("running selfdestruct...")
         for response in self.hcloud_server_responses:
             print(f"    {response.server.name}")
             ssh_con = paramiko.client.SSHClient()
@@ -100,27 +101,27 @@ class E2ESelfDestruct:
             ssh_key = paramiko.RSAKey.from_private_key_file(self.ssh_private_key_file, password=None)
             ssh_con.connect(response.server.public_net.ipv4.ip, username="root", look_for_keys=False, pkey=ssh_key, timeout=60)
             _stdin, _stdout, _stderr = ssh_con.exec_command("python3 --version")
-            print(f"        python version: {_stdout.read().decode('utf-8').strip()}", )
+            cprint(f"        python version: {_stdout.read().decode('utf-8').strip()}", attrs=["underline"])
             _stdin, _stdout, _stderr = ssh_con.exec_command(f"hcloud-selfdestruct --api-token {self.api_token}")
-            print("        selfdestruct triggered")
+            cprint("        selfdestruct triggered", "dark_grey")
             ssh_con.close()
 
     def check_for_existing_servers(self):
         """ check for existing servers """
-        print("check for existing servers")
+        print("check for existing servers...")
         sleep(5)
         for response in self.hcloud_server_responses:
             try:
                 self.hcloud.servers.get_by_id(response.server.id)
-                print(f"    {response.server.name} still exists")
+                cprint(f"    {response.server.name} still exists", "red")
             except APIException:
-                print(f"    {response.server.name} not found")
+                cprint(f"    {response.server.name} not found", "green")
 
     def cleanup(self):
         """ cleanup"""
         self.hcloud.ssh_keys.delete(self.hcloud.ssh_keys.get_by_name("E2ESelfDestruct"))
         os.remove(self.ssh_private_key_file)
-        print("ssh key deleted")
+        cprint("ssh key deleted", "dark_grey")
 
 
 def main():
