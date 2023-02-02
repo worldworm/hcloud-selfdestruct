@@ -1,4 +1,4 @@
-''' helper script to test hcloud-selfdestruct '''
+""" helper script to test hcloud-selfdestruct """
 import os
 import argparse
 from time import sleep
@@ -13,7 +13,7 @@ warnings.simplefilter("ignore")
 
 
 class E2ESelfDestruct:
-    ''' main class '''
+    """ main class """
 
     def __init__(self, api_token):
         self.api_token = api_token
@@ -25,25 +25,25 @@ class E2ESelfDestruct:
         self.upload_ssh_key()
 
     def generate_ssh_key(self):
-        ''' generate ssh key '''
+        """ generate ssh key """
         print("generating ssh key")
         key = paramiko.RSAKey.generate(4096)
         key.write_private_key_file(self.ssh_private_key_file, password=None)
         self.ssh_public_key = f"{key.get_name()} {key.get_base64()}"
 
     def upload_ssh_key(self):
-        ''' upload ssh key to hetzner cloud '''
+        """ upload ssh key to hetzner cloud """
         print("uploading ssh key to hetzner cloud")
         self.hcloud.ssh_keys.create(name="E2ESelfDestruct", public_key=self.ssh_public_key)
 
     def get_cloud_init_from_file(self):
-        ''' get cloud-init from cloud-init.yml '''
+        """ get cloud-init from cloud-init.yml """
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "cloud-init.yml"), "r", encoding="utf-8") as file:
             user_data = file.read()
         return user_data
 
     def deploy_server(self):
-        ''' deploy multiple hcloud server '''
+        """ deploy multiple hcloud server """
         cloud_init = self.get_cloud_init_from_file()
         ssh_key = self.hcloud.ssh_keys.get_by_name("E2ESelfDestruct")
         print("deploying servers")
@@ -55,7 +55,7 @@ class E2ESelfDestruct:
             self.hcloud_server_responses.append(response)
 
     def wait_for_ssh_server(self):
-        ''' wait for ssh server to be available '''
+        """ wait for ssh server to be available """
         print("waiting for ssh-server to boot")
         for response in self.hcloud_server_responses:
             print(f"    {response.server.name}")
@@ -73,7 +73,7 @@ class E2ESelfDestruct:
                     sleep(5)
 
     def wait_for_cloud_init(self):
-        ''' wait for cloud-init to install hcloud-selfdestruct '''
+        """ wait for cloud-init to install hcloud-selfdestruct """
         print("waiting for cloud-init to finish")
         for response in self.hcloud_server_responses:
             print(f"    {response.server.name}")
@@ -91,7 +91,7 @@ class E2ESelfDestruct:
             ssh_con.close()
 
     def trigger_selfdestruct(self):
-        ''' test hcloud-selfdestruct '''
+        """ test hcloud-selfdestruct """
         print("running selfdestruct")
         for response in self.hcloud_server_responses:
             print(f"    {response.server.name}")
@@ -106,7 +106,7 @@ class E2ESelfDestruct:
             ssh_con.close()
 
     def check_for_existing_servers(self):
-        ''' check for existing servers '''
+        """ check for existing servers """
         print("check for existing servers")
         sleep(5)
         for response in self.hcloud_server_responses:
@@ -117,14 +117,14 @@ class E2ESelfDestruct:
                 print(f"    {response.server.name} not found")
 
     def cleanup(self):
-        ''' cleanup'''
+        """ cleanup"""
         self.hcloud.ssh_keys.delete(self.hcloud.ssh_keys.get_by_name("E2ESelfDestruct"))
         os.remove(self.ssh_private_key_file)
         print("ssh key deleted")
 
 
 def main():
-    ''' main function '''
+    """ main function """
     argparser = argparse.ArgumentParser(description="helper script to test hcloud-selfdestruct")
     argparser.add_argument("--api-token",
                            "--api",
