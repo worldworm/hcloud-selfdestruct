@@ -25,7 +25,7 @@ class HcloudSelfDestruct:
                 return server
         else:  # pylint: disable=useless-else-on-loop
             self.notify("could not identify")
-            raise Exception("Could not identify server instance. Please specify server id.")
+            raise LookupError("Could not identify server instance. Please specify server id.")
 
     def get_server_object(self):
         """ get server object """

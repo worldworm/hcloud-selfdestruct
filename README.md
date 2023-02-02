@@ -35,12 +35,13 @@ Note: Only the server is deleted. Attachments such as mounted volumes, floating 
 ## Help
 ```
 > hcloud-selfdestruct --help
-usage: hcloud-selfdestruct [-h] --api-token API_TOKEN [--server-id SERVER_ID] [--apprise-id APPRISE_ID] [--shutdown]
+usage: hcloud-selfdestruct [-h] --api-token API_TOKEN [--server-id SERVER_ID] [--apprise-id APPRISE_ID] [--shutdown] [--version]
 
 cli tool to self destruct a hetzner cloud server
 
 options:
   -h, --help            show this help message and exit
+
   --api-token API_TOKEN, --api API_TOKEN, --token API_TOKEN
                         hetzner cloud api token
 
@@ -51,6 +52,8 @@ options:
                         apprise notification string
 
   --shutdown            just shutdown the server and not destroy it
+
+  --version, -v         show program's version number and exit
 ```
 
 Find the apprise syntax here: [apprise wiki](https://github.com/caronc/apprise/wiki#notification-services)
