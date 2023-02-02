@@ -125,6 +125,7 @@ class E2ESelfDestruct:
 
 def main():
     """ main function """
+    # pylint: disable=duplicate-code
     argparser = argparse.ArgumentParser(description="helper script to test hcloud-selfdestruct")
     argparser.add_argument("--api-token",
                            "--api",
@@ -132,6 +133,7 @@ def main():
                            type=str,
                            required=True,
                            help="hetzner cloud api token")
+    # pylint: enable=duplicate-code
     args = argparser.parse_args()
 
     e2e = E2ESelfDestruct(args.api_token)
