@@ -43,12 +43,20 @@ class E2ESelfDestruct:
             user_data = file.read()
         return user_data
 
-    def deploy_server(self):
+    def check_server_images(self, server_images):
+        """ check if hcloud server images are available """
+        cprint("checking hcloud server images", "dark_grey")
+        for image in server_images:
+            if self.hcloud.images.get_by_name(image) is None:
+                raise ValueError(f"hcloud server image {image} not found")
+
+    def deploy_server(self, server_images):
         """ deploy multiple hcloud server """
+        self.check_server_images(server_images)
         cloud_init = self.get_cloud_init_from_file()
         ssh_key = self.hcloud.ssh_keys.get_by_name("E2ESelfDestruct")
         print("deploying servers...")
-        for image in ["ubuntu-22.04", "fedora-37", "debian-11", "centos-stream-9", "rocky-9"]:
+        for image in server_images:
             print(f"    {image}")
             response = self.hcloud.servers.create(
                 name=f"hcloud-selfdestruct-test-{image.split('.', maxsplit=1)[0]}", server_type=ServerType(name="cx11"),
@@ -136,11 +144,16 @@ def main():
                            type=str,
                            required=True,
                            help="hetzner cloud api token")
+    argparser.add_argument("--images",
+                           nargs="+",
+                           required=False,
+                           default=["ubuntu-22.04", "fedora-37", "debian-11", "centos-stream-9", "rocky-9"],
+                           help="hcloud server images to test")
     # pylint: enable=duplicate-code
     args = argparser.parse_args()
 
     e2e = E2ESelfDestruct(args.api_token)
-    e2e.deploy_server()
+    e2e.deploy_server(args.images)
     e2e.wait_for_ssh_server()
     e2e.wait_for_cloud_init()
     e2e.trigger_selfdestruct()
