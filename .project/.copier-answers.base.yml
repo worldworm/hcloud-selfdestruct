@@ -1,0 +1,12 @@
+# Changes here will be overwritten by Copier
+_commit: 1ce9d17
+_src_path: https://github.com/worldworm/copier-base.git
+copyright_year_start: 2022
+copyright_year_today: 2023
+github_repository_name: hcloud-selfdestruct
+github_repository_namespace: worldworm
+github_username: worldworm
+project_description: A cli tool to self destruct a hetzner cloud server
+project_emoji: 💣
+project_name: hcloud-selfdestruct
+

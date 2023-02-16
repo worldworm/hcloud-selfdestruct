@@ -11,7 +11,6 @@
 
 
 ## Why
-
 Are you using a hetzner cloud server for heavy and long-running computing power? But you don't want to have additional costs when the calculation is done?
 
 With hcloud-selfdestruct, the server instance now self-destructs after the computation and generates no further costs.
@@ -19,11 +18,11 @@ With hcloud-selfdestruct, the server instance now self-destructs after the compu
 > **Warning**
 > This tool is in early development and may not work as expected.
 
-
 ## Installation
 ```bash
 pip install hcloud-selfdestruct
 ```
+
 ## Usage
 ```
 longrunningcommand && hcloud-selfdestruct --api-token abcdefg &
@@ -66,6 +65,6 @@ Find the server id here (enter without "#")
 
 ---
 <p align="center">
-  <i>© <a href="https://github.com/worldworm">worldworm</a> 2023</i><br>
+  <i>© <a href="https://github.com/worldworm">worldworm</a> 2022-2023</i><br>
   <i>Licensed under <a href="https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE">MIT</a></i><br>
 </p>
