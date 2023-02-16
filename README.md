@@ -58,7 +58,7 @@ options:
 Find the apprise syntax here: [apprise wiki](https://github.com/caronc/apprise/wiki#notification-services)
 
 Find the server id here (enter without "#")
-![How to find the server id](./.media/howToFindServerId.png "How to find the server id")
+![How to find the server id](./.project/media/howToFindServerId.png "How to find the server id")
 
 ## Not yet tested
 - complete self detection
