@@ -2,15 +2,11 @@
 import os
 import argparse
 from time import sleep
-import warnings
 import paramiko
 from termcolor import cprint
 from hcloud import Client, APIException
 from hcloud.server_types.domain import ServerType
 from hcloud.images.domain import Image
-
-# due to using paramiko WarningPolicy() to ignore host key errors
-warnings.simplefilter("ignore")
 
 
 class E2ESelfDestruct:
@@ -72,8 +68,7 @@ class E2ESelfDestruct:
             while ssh_available is False:
                 try:
                     ssh_con = paramiko.client.SSHClient()
-                    ssh_con.set_missing_host_key_policy(paramiko.WarningPolicy())
-                    paramiko.AutoAddPolicy()
+                    ssh_con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                     ssh_key = paramiko.RSAKey.from_private_key_file(self.ssh_private_key_file, password=None)
                     ssh_con.connect(response.server.public_net.ipv4.ip, username="root", look_for_keys=False, pkey=ssh_key, timeout=60)
                     ssh_con.close()
@@ -87,7 +82,7 @@ class E2ESelfDestruct:
         for response in self.hcloud_server_responses:
             cprint(f"    {response.server.name}", "dark_grey")
             ssh_con = paramiko.client.SSHClient()
-            ssh_con.set_missing_host_key_policy(paramiko.WarningPolicy())
+            ssh_con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh_key = paramiko.RSAKey.from_private_key_file(self.ssh_private_key_file, password=None)
             ssh_con.connect(response.server.public_net.ipv4.ip, username="root", look_for_keys=False, pkey=ssh_key, timeout=60)
             _stdin, _stdout, _stderr = ssh_con.exec_command("""
@@ -105,7 +100,7 @@ class E2ESelfDestruct:
         for response in self.hcloud_server_responses:
             print(f"    {response.server.name}")
             ssh_con = paramiko.client.SSHClient()
-            ssh_con.set_missing_host_key_policy(paramiko.WarningPolicy())
+            ssh_con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             ssh_key = paramiko.RSAKey.from_private_key_file(self.ssh_private_key_file, password=None)
             ssh_con.connect(response.server.public_net.ipv4.ip, username="root", look_for_keys=False, pkey=ssh_key, timeout=60)
             _stdin, _stdout, _stderr = ssh_con.exec_command("python3 --version")
