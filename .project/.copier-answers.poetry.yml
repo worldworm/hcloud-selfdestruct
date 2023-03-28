@@ -1,0 +1,12 @@
+# Changes here will be overwritten by Copier
+_commit: 23f4b54
+_src_path: https://github.com/worldworm/copier-poetry.git
+copyright_license: MIT
+github_repository_name: hcloud-selfdestruct
+github_repository_namespace: worldworm
+github_username: worldworm
+package_distribution_name: hcloud-selfdestruct
+package_import_name: hcloud_selfdestruct
+project_description: cli tool to self destruct a hetzner cloud server
+project_name: hcloud-selfdestruct
+use_docker: false
