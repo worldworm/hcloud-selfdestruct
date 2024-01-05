@@ -1,12 +1,16 @@
 # Changes here will be overwritten by Copier
-_commit: 1ce9d17
+_commit: v1.1.0
 _src_path: https://github.com/worldworm/copier-base.git
+badges:
+- PyPI
+copyright_license: MIT
 copyright_year_start: 2022
-copyright_year_today: 2023
-github_repository_name: hcloud-selfdestruct
-github_repository_namespace: worldworm
-github_username: worldworm
+copyright_year_today: 2024
 project_description: A cli tool to self destruct a hetzner cloud server
 project_emoji: 💣
 project_name: hcloud-selfdestruct
-
+repository_name: hcloud-selfdestruct
+repository_provider: GitHub
+repository_url: https://github.com/worldworm/hcloud-selfdestruct
+repository_username: worldworm
+warning_early_dev: true

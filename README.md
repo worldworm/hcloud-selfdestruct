@@ -3,10 +3,15 @@
   <i>A cli tool to self destruct a hetzner cloud server</i>
 </p>
 
-[![Stable Version](https://img.shields.io/pypi/v/hcloud-selfdestruct?color=blue)](https://pypi.org/project/hcloud-selfdestruct/)
-[![Python Version](https://img.shields.io/pypi/pyversions/hcloud-selfdestruct)](https://pypi.org/project/hcloud-selfdestruct/)
+<!-- Place https://shields.io/ badges here -->
+[![GitHub repo stars](https://img.shields.io/github/stars/worldworm/hcloud-selfdestruct)](https://github.com/worldworm/hcloud-selfdestruct)
 [![License](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=fff)](https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE)
-[![Mentioned in Awesome hcloud](https://camo.githubusercontent.com/e5d3197f63169393ee5695f496402136b412d5e3b1d77dc5aa80805fdd5e7edb/68747470733a2f2f617765736f6d652e72652f6d656e74696f6e65642d62616467652e737667)](https://github.com/hetznercloud/awesome-hcloud)
+[![GitHub last commit (main)](https://img.shields.io/github/last-commit/worldworm/hcloud-selfdestruct/main)](https://github.com/worldworm/hcloud-selfdestruct/commits/main/)
+[![GitHub release](https://img.shields.io/github/v/release/worldworm/hcloud-selfdestruct)](https://github.com/worldworm/hcloud-selfdestruct/releases/latest)
+[![GitHub commits since latest release](https://img.shields.io/github/commits-since/worldworm/hcloud-selfdestruct/latest/main)](https://github.com/worldworm/hcloud-selfdestruct/releases/latest)
+[![PyPI version](https://img.shields.io/pypi/v/hcloud-selfdestruct)](https://pypi.org/project/hcloud-selfdestruct/)
+[![PyPI Python version](https://img.shields.io/pypi/pyversions/hcloud-selfdestruct)](https://pypi.org/project/hcloud-selfdestruct/)
+[![Mentioned in Awesome hcloud](.project/media/mentioned-badge.svg)](https://github.com/hetznercloud/awesome-hcloud)
 [![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-black?logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=565239435&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope)
 
 
@@ -15,8 +20,10 @@ Are you using a hetzner cloud server for heavy and long-running computing power?
 
 With hcloud-selfdestruct, the server instance now self-destructs after the computation and generates no further costs.
 
-> **Warning**
-> This tool is in early development and may not work as expected.
+
+> [!WARNING]
+> This project is in early development and may not work as expected.
+
 
 ## Installation
 ```bash
@@ -65,6 +72,6 @@ Find the server id here (enter without "#")
 
 ---
 <p align="center">
-  <i>© <a href="https://github.com/worldworm">worldworm</a> 2022-2023</i><br>
-  <i>Licensed under <a href="https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE">MIT</a></i><br>
+  <i>© <a href="https://github.com/worldworm">worldworm</a> 2022-2024</i>
+  <br><i>Licensed under <a href="https://github.com/worldworm/hcloud-selfdestruct/blob/main/LICENSE">MIT</a></i>
 </p>
